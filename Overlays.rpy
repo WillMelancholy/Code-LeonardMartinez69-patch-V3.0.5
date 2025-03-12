@@ -187,7 +187,7 @@ screen material_selection(correct_items, all_items, tutorial_info=None):
                             text item:
                                 xalign 0.5
                                 text_align 0.5
-                                size 16
+                                size 25
             
             vbox:
                 spacing 10

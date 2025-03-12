@@ -4,16 +4,16 @@ screen Leaderboard(data):
     vbox style "st_leaderboard_box":
         hbox style "st_leaderboard_box":
             frame style "st_leaderboard_col1":
-                background Solid("#353535ff")
+                background Solid("#bba67eff")
                 text "Player Name" style "st_leaderboard_header"
             frame style "st_leaderboard_col2":
-                background Solid("#353535ff")
+                background Solid("#8a6868ff")
                 text "Points" style "st_leaderboard_header"
         $ index = 0
         for name, score in data.leaderboard.items():
             python:
                 index += 1
-                row_color = "#353535bb" if index % 2 == 0 else "#222222c4"
+                row_color = "#8a7d61bb" if index % 2 == 0 else "#92917fc4"
             hbox style "st_leaderboard_box":
                 frame style "st_leaderboard_col1":
                     background Solid(row_color)
@@ -137,18 +137,18 @@ screen material_selection(correct_items, all_items, tutorial_info=None):
             offset (-10, 10)
             button:
                 text "See Tutorial again":
-                    hover_color "#b48660"
+                    hover_color "#cca484"
                 action ShowMenu("tutorial1", tutorial_info=tutorial_info)
     frame:
         xalign 0.5
         yalign 0.5
         xpadding 30
         ypadding 30
-        background Solid("#e9a894b9")
+        background Solid("#ac897eb9")
         
         vbox:
             spacing 20
-            label "Select the correct materials:" xalign 0.5
+            label "{color=#00000c} {b} Select the correct materials:" xalign 0.5
             
             # Display the number of selected items
             text "Selected: [selected_len]/5" xalign 0.5
@@ -171,7 +171,7 @@ screen material_selection(correct_items, all_items, tutorial_info=None):
                         sensitive (not max_selected or item in selected)  # Disable button if limit is reached
                         if persistent.admin and item in correct_items:
                             frame:
-                                background Solid("#ffffff99")
+                                background Solid("#f5eaeaff")
                                 xalign 0.5
                                 xysize (1.0, 1.0)
                                 frame:
@@ -188,14 +188,14 @@ screen material_selection(correct_items, all_items, tutorial_info=None):
                             text item:
                                 xalign 0.5
                                 text_align 0.5
-                                size 16
+                                size 35
             
             vbox:
                 spacing 10
                 xalign 0.5
                 hbox:
                     xalign 0.5
-                    textbutton "Submit":
+                    textbutton "{color=#f5eaeaff} {b} Submit":
                         sensitive max_selected
                         action [Return(selected), Hide("material_selection")]
                         xalign 0.5
@@ -231,6 +231,9 @@ screen tutorial1(tutorial_info):
                 idle "Back_Button.png" at Back_button
                 if current_page > 0:
                     action SetScreenVariable("current_page", current_page - 1)
+                else:
+                    idle "Back_Button.png" at Back_button
+                    action Return()
 
         hbox:
             xalign 1.0

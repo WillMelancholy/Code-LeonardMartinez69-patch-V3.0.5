@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/Overlays.rpy", line 184: add expects a non-empty block.
-    add materials[item]:
-                        ^
+File "game/screens.rpy", line 321: vbox expects a non-empty block.
+    else:
+         ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Thu Mar 13 04:38:52 2025
+Thu Mar 13 07:18:39 2025

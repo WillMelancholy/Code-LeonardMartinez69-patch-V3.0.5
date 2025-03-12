@@ -247,15 +247,16 @@ screen quick_menu():
 
             xalign 0.5
             yalign 1.0
+            yoffset -50
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            #textbutton _("Back") action Rollback()
+            #textbutton _("History") action ShowMenu('history')
+            #textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            #textbutton _("Auto") action Preference("auto-forward", "toggle")
+            #textbutton _("Save") action ShowMenu('save')
+            #textbutton _("Q.Save") action QuickSave()
+            #textbutton _("Q.Load") action QuickLoad()
+            #textbutton _("Prefs") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -285,6 +286,25 @@ style quick_button_text:
 ## to other menus, and to start the game.
 
 screen navigation():
+    if main_menu:
+        button:
+            if persistent.admin:
+                background Solid("#ff0000")
+                text "WT" size 20 align 0.5, 0.5 outlines [(1, "#000000", 0, 0)]
+            else:
+                background None
+            hover_background Solid("#ffffff11")
+            anchor 0.0, 1.0
+            xysize 50, 50
+            pos 0.0, 1.0
+            offset 50, -50
+            action ToggleField(
+                persistent,
+                "admin",
+                true_value=True,
+                false_value=False
+            )
+
 
     vbox:
         style_prefix "navigation"
@@ -300,34 +320,34 @@ screen navigation():
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            #textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            #textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        #textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+            textbutton _("Preferences") action ShowMenu("preferences")
 
-        if _in_replay:
+        #if _in_replay:
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+        #    textbutton _("End Replay") action EndReplay(confirm=True)
 
-        elif not main_menu:
+        #elif not main_menu:
 
             textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        #textbutton _("About") action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        #if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            #textbutton _("Help") action ShowMenu("help")
 
-        if renpy.variant("pc"):
+        #if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            #textbutton _("Quit") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -549,10 +569,10 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
         action Return()
 
-    label title
+#    label title
 
-    if main_menu:
-        key "game_menu" action ShowMenu("main_menu")
+#    if main_menu:
+#        key "game_menu" action ShowMenu("main_menu")
 
 
 style game_menu_outer_frame is empty
@@ -1532,7 +1552,7 @@ style bubble_what:
     align (0.5, 0.5)
     text_align 0.5
     layout "subtitle"
-    color "#000"
+    color "#000000"
 
 define bubble.frame = Frame("gui/bubble.png", 55, 55, 55, 95)
 define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 55, 55, 55, 55)

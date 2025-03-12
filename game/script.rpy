@@ -124,11 +124,17 @@ define A = Character("Irene", callback=A)
 define B = Character("Titania", callback=B)
 define C = Character("Chlory", callback=C)
 define D = Character("Yuranno", callback=D)
-define L = Character("Lead Moore")
+define L = Character("Lead Moore", who_style="small_name")
 
+style small_name:
+    size 50
+    xpos 50
+    ypos 60
 define correct = "You got the right answer!"
 define wrong = "You got the wrong answer!"
 
+style large_text :
+    size 20
 default materials = {
     "Wire": "images/wire.png",
     "Tongs": "images/tongs.png",
@@ -150,6 +156,7 @@ label before_main_menu:
     $ preferences.set_volume("music", 0.2)  # set default main music
     return
 
+
 label start:
 
     play music "<loop 6.33>audio/classroom.ogg" fadein 1.0
@@ -161,31 +168,31 @@ label start:
     with fade
 
     show irene default
-    A "Yo! are you awake?"
+    A "Yo! are you awake? "
     hide irene default
 
     show irene speak2 at left
-    A "We were assigned as groupmates for the experiment"
+    A "We were assigned as {i}{color=#E2A602} groupmates {/color}{/i} for the experiment"
     hide irene speak2 
     
     show irene speaking at left
-    A "Oh, It's me [A] btw, Nice to meet you I guess."
+    A "Oh, It's me {color=#9858CD}[A]{/color} btw, Nice to meet you I guess."
     hide irene speaking
 
     show titania speaking at left
-    B "And I'm [B]. Let's split up the parts, I'll do the second experiment!"
+    B "And I'm {color=#9192C8}[B]{/color}. Let's split up the parts, I'll do the second experiment!"
     hide titania speaking
 
     show chlory speaking
-    C "Then the third should be mine! [C] by the way, nice to meet you!"
+    C "Then the third should be mine! {color=#E2A602}[C]{/color} by the way, nice to meet you!"
     hide chlory speaking
 
     show yuranno speaking at right
-    D "I guess the last one's mine then. The name's [D]."
+    D "I guess the last one's mine then. The name's {color=#00C02D}[D]{/color}."
     hide yuranno speaking
 
     show titania smile
-    B "Guess you should help them and contribute to the group then, [player]!"
+    B "Guess you should {color=#E2A602}help them and contribute to the group{/color} then, [player]!"
     hide titania smile
 
     player "Sure!"
@@ -202,19 +209,19 @@ label scene_2:
     with fade
     
     show irene speaking at left
-    A "I'll read out the process in the book, then you keep it in mind."
+    A "I'll {color=#E2A602}read out the process in the book, then you keep it in mind.{/color}"
     hide irene speaking
 
     player "*nods*"
     
     show irene speaking at left
     A "Here I go! It says that we should-"
-    A "Note the appearance of the wire."
-    A "Using the tongs..."
-    A "We must hold the wire in the hottest part of a burner flame for 1 to 2 minutes."
-    A "But first, to do that, we need to fix the Bunsen burner. Put the end of the tube into the yellow faucet, and the other end to the Bunsen burner."
-    A "Then, we place the evaporating dish near the base of the burner."
-    A "After that, we get a piece of magnesium from the laboratory coordinator. Using crucible tongs, hold the sample in the burner flame until the magnesium starts to burn. REMEMBER, DO NOT LOOK DIRECTLY AT THE FLAME."
+    A "{color=#EC15DA}Note the appearance of the wire.{/color}"
+    A "Using the {color=#EC15DA}tongs{/color}..."
+    A "We must hold the {color=#EC15DA}wire{/color} in the hottest part of a {color=#EC15DA}burner flame for 1 to 2 minutes.{/color}"
+    A "But first, to do that, we need to fix the {color=#EC15DA}Bunsen burner{/color}. Put the end of the tube into the yellow faucet, and the other end to the {color=#EC15DA}Bunsen burner.{/color}"
+    A "Then, we place the {color=#EC15DA}evaporating dish{/color} near the base of the burner."
+    A "After that, we get a piece of {color=#EC15DA}magnesium{/color} from the laboratory coordinator. Using {color=#EC15DA}crucible tongs{/color}, hold the sample in the burner flame until the{color=#EC15DA} magnesium {/color}starts to burn. REMEMBER,{color=#ff0000} DO NOT LOOK DIRECTLY AT THE FLAME.{/color}"
     A "When the ribbon stops burning, put the remains in the evaporating dish. Then we examine all that!"
     A "Did you get all that?"
     hide irene speaking
@@ -285,7 +292,7 @@ label scene_3:
             show irene speaking at left
             A "[wrong]"
             hide irene speaking
-        "dgsgsdsg":
+        "furiously start eating the magnesium":
             $ variables.points -= 1
             show irene speaking at left
             A "[wrong]"
@@ -320,20 +327,18 @@ label scene_5:
     show titania speaking at left
     B "Oh! Great, you've finished the first experiment. Let's move on to mine next. It says here in the book that-"
     
-    B "Place 2 heaping micro spatulas of copper (II) carbonate (CuCO3) in a clean, dry test tube. Note the appearance of the sample."
+    B "{color=#EC15DA}Place 2 heaping micro spatulas of copper (II) carbonate (CuCO3) {/color} in a clean, dry test tube. {color=#EC15DA}Note the appearance of the sample.{/color}"
     
     B "Watch the appearance closely—it's a light green powder."
     
-    B "Next, we'll heat it for about 3 minutes. Use the test tube holder like this. Make sure you hold it at the top, and don't touch the bottom."
+    B "Next, we'll heat it for about {color=#EC15DA}3 minutes.{/color} Use the test tube holder like this.{color=#EC15DA} Make sure you hold it at the top, and don't touch the bottom.{/color}"
     
-    B "After heating, we insert a burning wood splint into the test tube. If carbon dioxide (CO2) is present, it will extinguish the flame. Make sure you observe any changes in the residue inside the test tube."
+    B "After heating, {color=#EC15DA}we insert a burning wood splint into the test tube. If carbon dioxide (CO2) is present, it will extinguish the flame.{/color} {color=#D17D61}Make sure you observe any changes in the residue inside the test tube.{/color}"
     
     B "Did you get all that?"
     hide titania speaking
     
-    show player at left
     player "*nods*"
-    hide player
     
     show titania speaking at left
     B "Great! Let's start!"
@@ -521,7 +526,7 @@ label scene_8:
     with fade
     
     show chlory happy
-    C "Congratulations! You've made it to the third experiment, substitution! I'm eager to explain what the book says here. So listen carefully!"
+    C "Congratulations! You've made it to the third experiment, substitution! I'm eager to explain what the book says here. So {color=#EC15DA}listen carefully!{/color}"
     hide chlory happy
     
     player "*nods*"
@@ -529,19 +534,19 @@ label scene_8:
     label substitution_book:
 
     show chlory speaking
-    C "CAUTION. IT IS IMPORTANT TO WEAR PROPER ATTIRE INSIDE THE LABORATORY EXPERIMENT SUCH AS: LABORATORY GOWN, SAFETY GOGGLES, FACE MASK, AND DISPOSABLE GLOVES."
+    C "{color=#EC15DA}CAUTION. IT IS IMPORTANT TO WEAR PROPER ATTIRE INSIDE THE LABORATORY EXPERIMENT SUCH AS: LABORATORY GOWN, SAFETY GOGGLES, FACE MASK, AND DISPOSABLE GLOVES.{/color}"
     
-    C "Let's start! First, stand a clean, dry test tube in the test tube rack."
+    C "Let's start! First, stand a clean, {color=#EC15DA}dry test tube{/color} in the test tube rack."
     
-    C "Add about 5 mL of 3 M hydrochloric acid (HCl) to the tube."
+    C "Add about {color=#EC15DA}5 mL of 3 M hydrochloric acid (HCl){/color} to the tube."
     
-    C "Then, carefully drop a small piece of zinc metal (Zn) into the acid in the test tube. Observe and record what happens."
+    C "Then, carefully {color=#EC15DA}drop a small piece of zinc metal (Zn) into the acid in the test tube{/color}. Observe and record what happens."
     
-    C "Using a test tube holder, invert a second test tube over the mouth of the test tube in which the reaction is taking place. Then, remove the inverted tube after 30 seconds and quickly insert a burning wood splint into the mouth of the tube. A 'pop' indicates the presence of hydrogen gas."
+    C "{color=#D17D61}Using a test tube holder{/color}, {color=#EC15DA}invert a second test tube over the mouth of the test tube in which the reaction is taking place. Then, remove the inverted tube after 30 seconds and quickly insert a burning wood splint into the mouth of the tube{/color}. A 'pop' indicates the presence of hydrogen gas."
     
     C "Take note of the appearance of the substance in the reaction test tube."
     
-    C "Now, for the second part: Add about 5 mL of 1 M copper (II) sulfate (CuSO4) solution to a clean, dry test tube. Place a small amount of zinc metal in the solution. Observe the solution and the zinc before and after the reaction."
+    C "Now, for the second part: {color=#EC15DA}Add about 5 mL of 1 M copper (II) sulfate (CuSO4) solution{/color} to a clean, dry test tube. {color=#EC15DA}Place a small amount of zinc metal in the solution{/color}. Observe the solution and the zinc before and after the reaction."
     
     C "Did you get all that?"
 
@@ -598,7 +603,7 @@ label scene_9:
             C "That's right! It is important to handle acids with care."
         "C. It can stain your clothes":
             $ variables.points -= 1
-            C "Oh no! You did not pay attention to the caution."
+            C "Only if your clothes dont melt off!"
     
     C "What is the next step after inverting the test tube for 30 seconds?"
     menu:
@@ -623,7 +628,7 @@ label scene_10:
         C "We're finally done!"
         hide chlory idle
         show Lead Moore happy at left
-        L "Absolute Cinema!"
+        L "You cooked hard, You're getting passing grades for that!"
         hide Lead Moore happy
     else:
         show Lead Moore cry at right
@@ -647,9 +652,9 @@ label scene_11:
     hide yuranno speaking
     show yuranno default
     
-    D "First, we'll start by adding about 2 mL of 0.1 M Lead Nitrate Pb (NO3)2 to a clean, dry test tube."
+    D "First, we'll start by adding about {color=#EC15DA}2 mL of 0.1 M Lead Nitrate Pb (NO3)2{/color} to a clean, {color=#EC15DA}dry test tube.{/color}"
     
-    D "Next, we'll add 2 mL of 0.1 M Potassium Iodide (KI) to the test tube. Watch closely!"
+    D "Next, we'll add {color=#EC15DA}2 mL of 0.1 M Potassium Iodide (KI){/color} to the test tube. Watch closely!"
     
     D "Look at that! Observe the reaction and note any changes in the mixture."
     
@@ -663,7 +668,9 @@ label scene_11:
     
     D "Now comes the fun part! We'll fill each beaker with the ammonium hydroxide solution to produce red, white, and blue solutions."
     
-    D "Make sure to observe the colors that develop!"
+    D "Make sure to {color=#EC15DA}observe the colors that develop!{/color}"
+
+    D "Look! It's {color=#DCC43D}{b}Yellow!{/color}"
     
     jump scene_12
 
@@ -740,19 +747,19 @@ label scene_14:
     hide titania speaking
 
     show irene speaking at left
-    A "We noted the appearance of the wire before heating and then heated it in the hottest part of the flame for 1-2 minutes. The key thing was to observe the changes."
+    A "We noted the {color=#EC15DA}appearance of the wire {/color} before heating and then heated it in the hottest part of the flame for 1-2 minutes. The key thing was to observe the changes."
     hide irene speaking
 
     show chlory speaking
-    C "Next, the Analysis experiment. We heated copper(II) carbonate and observed its color change and the emission of carbon dioxide."
+    C "Next, the Analysis experiment. We heated copper(II) carbonate and observed its color change and the {color=#EC15DA}emission of carbon dioxide.{/color}"
     hide chlory speaking
 
     show yuranno speaking at left
-    D "The Substitution experiment involved the reaction of zinc with hydrochloric acid and copper(II) sulfate. Safety precautions were very important, as we worked with acids."
+    D "The Substitution experiment involved the reaction of zinc with hydrochloric acid and copper(II) sulfate. {color=#EC15DA}Safety precautions were very important{/color}, as we worked with acids."
     hide yuranno speaking
 
     show irene speaking at right
-    A "Finally, the Metathesis experiment. We mixed lead nitrate with potassium iodide and observed the precipitate formation."
+    A "Finally, the Metathesis experiment. We mixed {color=#EC15DA}lead nitrate with potassium iodide and observed the precipitate formation.{/color}"
     hide irene speaking
 
     show titania speaking at left
@@ -878,14 +885,20 @@ label results:
     if variables.points >= 40:
         "You have [variables.points] points."
         "In total, you made [variables.mistakes] wrong choices."
+        show titania speaking at left
         B "Well done! You certainly listened well. As a reward—an extra credit point!"
+        hide titania speaking
+
+        show yuranno speaking
         D "Congratulations! Here's a chemistry-themed sticker!"
+        hide yuranno speaking
+
     else:
         A "Looks like you're a bit of practice away. Don't worry!"
         C "You need to retake the quiz to improve your score. Let's go over the main observations again."
         D "Reloading the slideshow for review."
         jump quiz
-
+    show titania smile at left
     B "We hope you learned something new about these experiments. Thanks for trying it out!"
         
     call screen Leaderboard(variables)
