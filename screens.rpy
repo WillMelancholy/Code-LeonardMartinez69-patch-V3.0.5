@@ -449,7 +449,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 #PARALLAX LAYER IMAGES HERE VVVV
-    add TrackCursor("gui/main_menu.png", 25) xpos 4 ypos 2 xzoom 1.1 yzoom 1.1
+    add TrackCursor("gui/main_menu.png", 25) xpos -4 ypos -2 xzoom -0.1 yzoom -0.1
     add TrackCursor("images/Chlory_Confused.png", 16)xpos 700 ypos 200 xzoom 0.5 yzoom 0.5
     add TrackCursor("images/Titania_Idle.png", 14)xpos 1100 ypos 200 xzoom 0.5 yzoom 0.5
     #add "gui/Menu_layer.png" xpos 100 ypos -10 xzoom 1.0 yzoom 1.0
