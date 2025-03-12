@@ -204,7 +204,7 @@ label scene_2:
     show irene speaking at left
     A "I'll read out the process in the book, then you keep it in mind."
     hide irene speaking
-    
+
     player "*nods*"
     
     show irene speaking at left
@@ -246,7 +246,7 @@ label scene_3:
     $ all_items = list(correct_materials) + additional_items
     $ renpy.random.shuffle(all_items)
 
-    call screen material_selection(correct_materials, all_items)
+    call screen material_selection(correct_materials, all_items, tutorial_info=scene_3_info)
 
     # Evaluate selection
     $ correct_selected = _return & correct_materials  # Intersection of selected and correct items

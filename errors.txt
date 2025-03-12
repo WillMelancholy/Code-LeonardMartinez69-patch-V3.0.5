@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 73: expected statement.
-    FOR CHARACTER SPEAKING GENERATOR
-                                    ^
+File "game/Overlays.rpy", line 184: add expects a non-empty block.
+    add materials[item]:
+                        ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Wed Mar 12 15:29:55 2025
+Thu Mar 13 04:38:52 2025
