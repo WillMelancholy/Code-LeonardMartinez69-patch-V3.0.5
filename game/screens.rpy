@@ -112,8 +112,8 @@ screen say(who, what):
 
     ## If there's a side image, display it above the text. Do not display on the
     ## phone variant - there's no room.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
+    #if not renpy.variant("small"):
+        #add SideImage() xalign 0.0 yalign 1.5
 
 
 ## Make the namebox available for styling through the Character object.
@@ -157,7 +157,7 @@ style say_dialogue:
 
     xpos 450
     xsize 1080
-    ypos -50
+    ypos 30
 
     adjust_spacing False
 
@@ -1616,15 +1616,16 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
+            #textbutton _("Back") action Rollback()
+            #textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            #textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Menu") action ShowMenu()
 
 
-style window:
-    variant "small"
-    background "gui/phone/textbox.png"
+#style window:
+    #variant "small"
+    #background "gui/phone/textbox.png"
+    #xpos 1000
 
 style radio_button:
     variant "small"

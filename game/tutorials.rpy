@@ -2,14 +2,14 @@ init python:
     scene_3_info = {
         0 : [
             "{color=#cca484}This is the first page of the tutorial.{/color}",
-            "{color=#cca484}It will teach you how to play the game."
+            "{color=#cca484}Listen carefully to what your classmates instruct"
         ],
         1 : [
-            "{color=#cca484}This is the second page of the tutorial.",
-            "{color=#cca484}It will teach you how to play the game."
+            "{color=#cca484}Click the correct materials",
+            "{color=#cca484}And press submit once done."
         ],
         2 : [
-            "{color=#cca484}This is the third page of the tutorial.",
-            "{color=#cca484}It will teach you how to play the game."
+            "{color=#cca484}Questions may arise later,",
+            "{color=#cca484}Make sure you listen carefully."
         ],
     }
