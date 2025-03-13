@@ -161,7 +161,7 @@ label start:
 
     play music "<loop 6.33>audio/classroom.ogg" fadein 1.0
 
-    call variables from _call_variables  
+    call variables  
     show screen ScoreOverlay  
 
     scene bg classroom_pov

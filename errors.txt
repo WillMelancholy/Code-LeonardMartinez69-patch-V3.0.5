@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 321: vbox expects a non-empty block.
-    else:
-         ^
+File "game/screens.rpy", line 733: 'a' is not a keyword argument or valid child of the vbox statement.
+    a
+     ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Thu Mar 13 07:18:39 2025
+Thu Mar 13 07:50:45 2025
