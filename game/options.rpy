@@ -13,6 +13,7 @@
 ## The _() surrounding the string marks it as eligible for translation.
 
 define config.name = _("Alchemi")
+default persistent.admin = False
 
 init python:
     config.mouse = { "default": [("gui/cursor/cursor_pen.png", 64, 64 ) ] }
@@ -188,15 +189,20 @@ init python:
 
     ## To archive files, classify them as 'archive'.
 
-    # build.classify('game/**.png', 'archive')
-    # build.classify('game/**.jpg', 'archive')
+    build.classify('game/audio/classroom.ogg', 'archive')
+    build.classify('game/audio/Music/**', 'archive')
+    build.classify('game/fonts/**', 'archive')
+    build.classify('game/gui/**', 'archive')
+    build.classify('game/images/**', 'archive')
+    build.classify('game/python-packages/**', 'archive')
+    build.classify('game/tl/**', 'archive')
+    build.classify('game/*', 'archive')
 
     ## Files matching documentation patterns are duplicated in a mac app build,
     ## so they appear in both the app and the zip file.
 
     build.documentation('*.html')
     build.documentation('*.txt')
-
 
 ## A Google Play license key is required to perform in-app purchases. It can be
 ## found in the Google Play developer console, under "Monetize" > "Monetization

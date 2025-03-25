@@ -120,8 +120,10 @@ transform Next_button:
     xsize 200
     ysize 200
 
-
-
+style st_go_back_button_text:
+    size 30
+    bold True 
+    xalign 0.5
 
 screen material_selection(correct_items, all_items, tutorial_info=None):
     modal True
@@ -274,6 +276,23 @@ screen tutorial1(tutorial_info):
             spacing 5
             for info_text in tutorial_info_page:
                 text info_text
+
+screen Backbutton:
+    frame:
+        anchor (0.0, 1.0)
+        pos (0.0, 1.0)
+        xoffset 30
+        background Frame("lined_paper.png")
+        xysize (200, 100)
+        textbutton "Go Back":
+            style "st_go_back_button_text"
+            action Rollback()
+            xalign 0.5
+            yalign 0.5 
+            text_color "#000000"
+            
+
+
 
         
     

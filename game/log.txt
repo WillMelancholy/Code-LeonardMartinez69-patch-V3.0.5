@@ -1,36 +1,37 @@
-2025-02-15 14:45:30 UTC
+2025-02-15 16:22:50 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.4.24120703
 
-Early init took 0.05s
-Loading error handling took 0.02s
-Loading script took 0.08s
-Loading save slot metadata took 0.00s
+Early init took 0.08s
+Loading error handling took 0.04s
+Loading script took 0.27s
+Loading save slot metadata took 0.04s
 Loading persistent took 0.00s
-Running init code took 0.03s
-Loading analysis data took 0.01s
+Running init code took 0.20s
+Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.00s
+Reloading save slot metadata took 0.03s
 Index archives took 0.00s
-Dump and make backups took 0.04s
+Backing up script files to 'C:\\Users\\Jedrik\\AppData\\Roaming/RenPy/backups\\Code':
+Dump and make backups took 0.07s
 Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc took 0.03s
+Making clean stores took 0.01s
+Initial gc took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.24s
+Creating interface object took 0.34s
 Cleaning stores took 0.00s
-Init translation took 0.02s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.04s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.02s
+Prepare screens took 0.08s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Save bytecode. took 0.02s
 Running _start took 0.00s
-Interface start took 0.05s
+Interface start took 0.08s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -40,25 +41,16 @@ Vendor: "b'NVIDIA Corporation'"
 Renderer: b'NVIDIA GeForce GTX 1660 SUPER/PCIe/SSE2'
 Version: b'4.6.0 NVIDIA 572.16'
 Display Info: None
-Screen sizes: virtual=(800, 600) physical=(800, 600) drawable=(800, 600)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
 Maximum texture size: 4096x4096
-
-Full traceback:
-  File "C:\Users\Jedrik\Downloads\renpy-8.3.4-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "C:\Users\Jedrik\Downloads\renpy-8.3.4-sdk\renpy\main.py", line 652, in main
-    run(restart)
-  File "C:\Users\Jedrik\Downloads\renpy-8.3.4-sdk\renpy\main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "C:\Users\Jedrik\Downloads\renpy-8.3.4-sdk\renpy\execution.py", line 958, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 288, in script
-    python:
-  File "C:\Users\Jedrik\Downloads\renpy-8.3.4-sdk\renpy\script.py", line 1103, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'start'.
-
-While running game code:
-  File "renpy/common/00start.rpy", line 288, in script
-    python:
-ScriptError: could not find label 'start'.
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1239, 697) drawable=(1239, 697)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
+Maximum texture size: 4096x4096
+{'TANGINA MO IAN': 76, 'TITEEEEEEEEEEE': 52, 'Jedddddddd': 44, 'Jedrik': 40, 'Mx. Kim': 20, 'LEDMOR': 20, 'tangina mo ledmor': 20, 'Nigalicious': 20, 'Skibidi Rizz': 20, 'test': 20}
+Screen sizes: virtual=(1920, 1080) physical=(1366, 697) drawable=(1366, 697)
+Maximum texture size: 4096x4096
+{'TANGINA MO IAN': 76, 'TITEEEEEEEEEEE': 52, 'Jedddddddd': 44, 'Jedrik': 40, 'Mx. Kim': 20, 'LEDMOR': 20, 'tangina mo ledmor': 20, 'Nigalicious': 20, 'Skibidi Rizz': 20, 'test': 20}
+{'TANGINA MO IAN': 76, 'TITEEEEEEEEEEE': 52, 'Jedddddddd': 44, 'Jedrik': 40, 'Mx. Kim': 20, 'LEDMOR': 20, 'tangina mo ledmor': 20, 'Nigalicious': 20, 'Skibidi Rizz': 20, 'test': 20}

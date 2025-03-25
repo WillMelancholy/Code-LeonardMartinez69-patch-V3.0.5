@@ -135,7 +135,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Solid( "#303030b9", xalign=0.5, yalign=0.5 )
+    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -158,7 +158,6 @@ style say_dialogue:
     xpos gui.dialogue_xpos
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
-
 
     adjust_spacing False
 
@@ -207,19 +206,10 @@ style input:
 
 screen choice(items):
     style_prefix "choice"
+
     vbox:
         for i in items:
-            python:
-                caption = i.caption
-                if persistent.admin:
-                    color = (
-                        "#009900"
-                        if i.kwargs.get("is_correct", False) else
-                        "#990000"
-                    )
-                    caption = "{color=%s}%s{/color}" % (color, caption)
-            textbutton caption:
-                action i.action
+            textbutton i.caption action i.action
 
 
 style choice_vbox is vbox
@@ -296,24 +286,6 @@ style quick_button_text:
 
 screen navigation():
 
-    if main_menu:
-        button:
-            if persistent.admin:
-                background Solid("#ff0000")
-                text "WT" size 20 align 0.5, 0.5 outlines [(1, "#000000", 0, 0)]
-            else:
-                background None
-            hover_background Solid("#ffffff11")
-            anchor 0.0, 1.0
-            xysize 50, 50
-            pos 0.0, 1.0
-            offset 50, -50
-            action ToggleField(
-                persistent,
-                "admin",
-                true_value=True,
-                false_value=False
-            )
     vbox:
         style_prefix "navigation"
 
@@ -449,7 +421,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 #PARALLAX LAYER IMAGES HERE VVVV
-    add TrackCursor("gui/main_menu.png", 25) xpos -4 ypos -2 xzoom -0.1 yzoom -0.1
+    add TrackCursor("gui/main_menu.png", 25) xpos 4 ypos 2 xzoom 1.1 yzoom 1.1
     add TrackCursor("images/Chlory_Confused.png", 16)xpos 700 ypos 200 xzoom 0.5 yzoom 0.5
     add TrackCursor("images/Titania_Idle.png", 14)xpos 1100 ypos 200 xzoom 0.5 yzoom 0.5
     #add "gui/Menu_layer.png" xpos 100 ypos -10 xzoom 1.0 yzoom 1.0
