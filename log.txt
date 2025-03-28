@@ -1,16 +1,13 @@
-2025-03-28 08:58:10 UTC
+2025-03-28 09:22:20 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.4.24120703
 
-Early init took 0.07s
-Loading error handling took 0.12s
-Loading script took 1.50s
-Loading save slot metadata took 0.03s
+Early init took 0.06s
+Loading error handling took 0.11s
+Loading script took 1.47s
+Loading save slot metadata took 0.04s
 Loading persistent took 0.00s
-C:\Users\LENOVO\Desktop\Study related\Renpy\Game\Code-LeonardMartinez69-patch-V3.0.5\game\pydub\utils.py:165: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
-  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
-pydub/utils.py:165: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
-Running init code took 0.24s
+Running init code took 0.21s
 Loading analysis data took 0.00s
 Analyze and compile ATL took 0.01s
 Reloading save slot metadata took 0.02s
@@ -19,17 +16,17 @@ Backing up script files to 'C:\\Users\\LENOVO\\AppData\\Roaming/RenPy/backups\\C
 Dump and make backups took 0.04s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.05s
+Initial gc took 0.04s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b'DRS_SaveSettings() = -1.' (can be ignored)
-Creating interface object took 0.28s
+Creating interface object took 0.23s
 Cleaning stores took 0.00s
 Init translation took 0.04s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.03s
 Save screen analysis took 0.02s
-Prepare screens took 0.14s
-Save pyanalysis. took 0.02s
+Prepare screens took 0.13s
+Save pyanalysis. took 0.01s
 Save bytecode. took 0.03s

@@ -1,42 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 171, in script
-    A "Yo! are you awake? "
-  File "game/script.rpy", line 100, in A
-    build_sentence(_last_say_what, "Irene")
-  File "game/speak.rpy", line 59, in build_sentence
-    sentence_wav.export(config.gamedir+"/audio/output.wav", format="wav")
-PermissionError: [Errno 13] Permission denied: 'C:\\Users\\LENOVO\\Desktop\\Study related\\Renpy\\Game\\Code-LeonardMartinez69-patch-V3.0.5\\game/audio/output.wav'
+  File "game/speak.rpy", line 11, in <module>
+ModuleNotFoundError: No module named 'pydub'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 171, in script
-    A "Yo! are you awake? "
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2579, in execute
-    Say.execute(self)
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 621, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\exports\sayexports.py", line 132, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 1455, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 1106, in do_display
-    display_say(who,
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 695, in display_say
-    pause_callback("show")
-  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 91, in __call__
-    c(*args, **kwargs)
-  File "game/script.rpy", line 100, in A
-    build_sentence(_last_say_what, "Irene")
-  File "game/speak.rpy", line 59, in build_sentence
-    sentence_wav.export(config.gamedir+"/audio/output.wav", format="wav")
-  File "pydub/audio_segment.py", line 867, in export
-  File "pydub/utils.py", line 55, in _fd_or_path_or_tempfile
-PermissionError: [Errno 13] Permission denied: 'C:\\Users\\LENOVO\\Desktop\\Study related\\Renpy\\Game\\Code-LeonardMartinez69-patch-V3.0.5\\game/audio/output.wav'
+  File "game/speak.rpyc", line 8, in script
+  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 827, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\LENOVO\Desktop\Study related\Renpy\renpy-8.3.4-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/speak.rpy", line 11, in <module>
+ModuleNotFoundError: No module named 'pydub'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.4.24120703
 Alchemi 1.0
-Thu Mar 13 07:57:30 2025
+Fri Mar 28 17:20:53 2025
