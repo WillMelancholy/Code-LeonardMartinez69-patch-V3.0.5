@@ -87,43 +87,12 @@ init python:
     #Generate seperate audio channel from voice for beeps.
     renpy.music.register_channel(name='beeps', mixer='voice')
 
-    #Character callback that generates the sound.
-    def C(event, **kwargs):
-        if event == "show": #When the text is shown
-            build_sentence(_last_say_what, "Chlory")
-            renpy.sound.play("audio/output.wav", channel="beeps", loop=False)
-        elif event == "slow_done" or event == "end": #When the text is finished displaying or you open a menu.
-            renpy.sound.stop(channel="beeps")
-
-    def A(event, **kwargs):
-        if event == "show": 
-            build_sentence(_last_say_what, "Irene")
-            renpy.sound.play("audio/output.wav", channel="beeps", loop=False)
-        elif event == "slow_done" or event == "end": 
-            renpy.sound.stop(channel="beeps") 
-
-    def B(event, **kwargs):
-        if event == "show": 
-            build_sentence(_last_say_what, "Titania")
-            renpy.sound.play("audio/output.wav", channel="beeps", loop=False)
-        elif event == "slow_done" or event == "end": 
-            renpy.sound.stop(channel="beeps") 
-
-    def D(event, **kwargs):
-        if event == "show": 
-            build_sentence(_last_say_what, "Yuranno")
-            renpy.sound.play("audio/output.wav", channel="beeps", loop=False)
-        elif event == "slow_done" or event == "end": 
-            renpy.sound.stop(channel="beeps") 
-
-
-
 define e = Character("Eileen")
 define player = Character("Player")
-define A = Character("Irene", callback=A)
-define B = Character("Titania", callback=B)
-define C = Character("Chlory", callback=C)
-define D = Character("Yuranno", callback=D)
+define A = Character("Irene")
+define B = Character("Titania")
+define C = Character("Chlory")
+define D = Character("Yuranno")
 define L = Character("Lead Moore", who_style="small_name")
 
 style small_name:
@@ -224,7 +193,9 @@ label scene_2:
     A "We must hold the {color=#EC15DA}wire{/color} in the hottest part of a {color=#EC15DA}burner flame for 1 to 2 minutes.{/color}"
     A "But first, to do that, we need to fix the {color=#EC15DA}Bunsen burner{/color}. Put the end of the tube into the yellow faucet, and the other end to the {color=#EC15DA}Bunsen burner.{/color}"
     A "Then, we place the {color=#EC15DA}evaporating dish{/color} near the base of the burner."
-    A "After that, we F a piece of {color=#EC15DA}magnesium{/color} from the laboratory coordinator. Using {color=#EC15DA}crucible tongs{/color}, hold the sample in the burner flame until the{color=#EC15DA} magnesium {/color}starts to burn. REMEMBER,{color=#ff0000} DO NOT LOOK DIRECTLY AT THE FLAME.{/color}"
+    A "After that, we get a piece of {color=#EC15DA}magnesium{/color} from the laboratory coordinator."
+    A "Using {color=#EC15DA}crucible tongs{/color}, hold the sample in the burner flame until the{color=#EC15DA} magnesium {/color}starts to burn"
+    A "REMEMBER,{color=#ff0000} DO NOT LOOK DIRECTLY AT THE FLAME.{/color}"
     A "When the ribbon stops burning, put the remains in the evaporating dish. Then we examine all that!"
     A "Did you get all that?"
     hide irene speaking
@@ -289,25 +260,26 @@ label scene_3:
 
         menu:
             "Hold the sample in the burner flame until the magnesium starts to burn":
-                $ variables.points += 5
+                $ variables.correct_answer("q2")
                 show irene speaking at left
                 A "Right! I remember now! DON'T LOOK AT IT DIRECTLY!"
                 hide irene speaking
             "Put aside":
-                $ variables.points -= 1
+                $ variables.wrong_answer("q2")
                 show irene speaking at left
                 A "[wrong]"
                 hide irene speaking
             "Hold the sample beside the burner flame for 2 to 3 minutes":
-                $ variables.points -= 1
+                $ variables.wrong_answer("q2")
                 show irene speaking at left
                 A "[wrong]"
                 hide irene speaking
             "furiously start eating the magnesium":
-                $ variables.points -= 1
+                $ variables.wrong_answer("q2")
                 show irene speaking at left
                 A "[wrong]"
                 hide irene speaking
+    
     if len(variables.wrong_answers) > 0:
         $ first_try = False
         jump scene_2
@@ -349,9 +321,9 @@ label scene_5:
     
     B "Next, we'll heat it for about {color=#EC15DA}3 minutes.{/color} Use the test tube holder like this.{color=#EC15DA} Make sure you hold it at the top, and don't touch the bottom.{/color}"
     
-    B "After heating, we insert a burning wood splint into the test tube. If carbon dioxide (CO2) is present, it will extinguish the flame. Make sure you observe any changes in the residue inside the test tube."
-    
-    B "After heating, {color=#EC15DA}we insert a burning wood splint into the test tube. If carbon dioxide (CO2) is present, it will extinguish the flame.{/color} {color=#D17D61}Make sure you observe any changes in the residue inside the test tube.{/color}"
+    B "After heating, {color=#EC15DA}we insert a burning wood splint into the test tube. If carbon dioxide (CO2) is present, it will extinguish the flame.{/color}"
+
+    B "{color=#D17D61}Make sure you observe any changes in the residue inside the test tube.{/color}"
     
     B "Did you get all that?"
     hide titania speaking
@@ -460,14 +432,14 @@ label scene_6:
         hide titania speaking
         menu:
             "3 minutes"(is_correct=True):
-                $ variables.wrong_answer("q4")
-                show titania speaking at left
-                B "Oh you got it wrong. Here look at the textbook again."
-                hide titania speaking  
-            "2 minutes":
                 $ variables.correct_answer("q4")
                 show titania speaking at left
                 B "Wow, you have good memory!"
+                hide titania speaking  
+            "2 minutes":
+                $ variables.wrong_answer("q4")
+                show titania speaking at left
+                B "Oh you got it wrong. Here look at the textbook again." 
                 hide titania speaking
             "20 seconds":
                 $ variables.wrong_answer("q4")
@@ -577,11 +549,19 @@ label scene_8:
     
     C "Then, carefully {color=#EC15DA}drop a small piece of zinc metal (Zn) into the acid in the test tube{/color}. Observe and record what happens."
     
-    C "{color=#D17D61}Using a test tube holder{/color}, {color=#EC15DA}invert a second test tube over the mouth of the test tube in which the reaction is taking place. Then, remove the inverted tube after 30 seconds and quickly insert a burning wood splint into the mouth of the tube{/color}. A 'pop' indicates the presence of hydrogen gas."
+    C "{color=#D17D61}Using a test tube holder{/color}, {color=#EC15DA}invert a second test tube over the mouth of the test tube in which the reaction is taking place."
+
+    C "{color=#D17D61}Then, remove the inverted tube after 30 seconds and quickly insert a burning wood splint into the mouth of the tube{/color}."
+
+    C "A 'pop' indicates the presence of hydrogen gas."
     
     C "Take note of the appearance of the substance in the reaction test tube."
     
-    C "Now, for the second part: {color=#EC15DA}Add about 5 mL of 1 M copper (II) sulfate (CuSO4) solution{/color} to a clean, dry test tube. Then, {color=#EC15DA}Place a small amount of zinc metal in the solution{/color}.Lastly, observe the solution and the zinc before and after the reaction."
+    C "Now, for the second part: {color=#EC15DA}Add about 5 mL of 1 M copper (II) sulfate (CuSO4) solution{/color} to a clean, dry test tube."
+    
+    C "Then, {color=#EC15DA}Place a small amount of zinc metal in the solution{/color}." 
+    
+    C "Lastly, observe the solution and the zinc before and after the reaction."
     
     C "Did you get all that?"
 
@@ -601,7 +581,7 @@ label scene_9:
     if "q1" in variables.wrong_answers or first_try:
         C "What are the materials we need?"
         # Define correct materials and all items
-        $ correct_materials = {"5mL of 3M Hydrochloric Acid (HCl)", "Zinc Metal (Zn)", "Wood Splint", "5mL of 1M Copper (II) Sulfate (CuSO4)", "Test Tubes"}
+        $ correct_materials = {"5mL of 3M Hydrochloric Acid (HCl)", "Zinc Metal (Zn)", "Wood Splint", "5mL of 1M Copper (II) Sulfate (CuSO4)", "Test Tubes", "Test Tube Holder"}
         $ all_items = list(materials.keys())
 
         # Ensure correct materials are included
@@ -614,7 +594,7 @@ label scene_9:
         $ all_items = list(correct_materials) + additional_items
         $ renpy.random.shuffle(all_items)
 
-        call screen material_selection(correct_materials, all_items)
+        call screen material_selection2(correct_materials, all_items)
 
         # Evaluate selection
         $ correct_selected = _return & correct_materials  # Intersection of selected and correct items
@@ -803,7 +783,8 @@ label scene_14:
     hide titania speaking
 
     show irene speaking at left
-    A "We noted the {color=#EC15DA}appearance of the wire {/color} before heating and then heated it in the hottest part of the flame for 1-2 minutes. The key thing was to observe the changes."
+    A "We noted the {color=#EC15DA}appearance of the wire {/color} before heating and then heated it in the hottest part of the flame for 1-2 minutes."
+    A "The key thing was to observe the changes."
     hide irene speaking
 
     show chlory speaking
@@ -937,7 +918,7 @@ label quiz:
 
     if len(variables.wrong_answers) > 0:
         $ first_try = False
-        jump scene_11
+        jump scene_14
 
     python:
         if variables.is_online():
@@ -985,31 +966,3 @@ label variables:
         variables = Variables()  
     return
 
-#label addtional_options:
-    
-#    if variables.retry_option and not variables.continue_anyway:
-#        menu too_many_mistakes_menu:
-#            "You made too many mistakes."
-#            "Continue anyway!":
-#                $ variables.continue_anyway = True
-#            "Retry from the beginning!":
-#                jump start
-#        return
-
-
-#    if variables.retry_option == True and variables.continue_anyway == False:
-#        menu too_many_mistakes_menu:
-#            "You made too many mistakes."
-#            "Continue anyway!":
-
-#                $ variables.continue_anyway = True
-#                pass
-#            "Retry from the beginning!":
-#                jump start
-#    return
-#    menu:
-#        "You made too many mistakes."
-#        "Continue anyway!":
-#            pass
-#        "Retry from the beginning":
-#            return

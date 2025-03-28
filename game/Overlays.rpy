@@ -156,7 +156,7 @@ screen material_selection(correct_items, all_items, tutorial_info=None):
             text "Selected: [selected_len]/5" xalign 0.5
             
             vpgrid:
-                cols 3
+                cols 4
                 spacing 40
                 for item in all_items:
                     button:
@@ -211,6 +211,95 @@ screen material_selection(correct_items, all_items, tutorial_info=None):
                         textbutton "{color=#990000}Skip (incorrect){/color}":
                             action [Return(set()), Hide("material_selection")]
                             xalign 0.5
+
+
+screen material_selection2(correct_items, all_items, tutorial_info=None):
+    modal True
+    zorder 200
+    default selected = set()
+
+    $ selected_len = len(selected)
+    $ max_selected = selected_len >= 6
+    if tutorial_info:
+        frame:
+            anchor (1.0, 0.0)
+            pos (1.0, 0.0)
+            offset (-10, 10)
+            button:
+                text "See Tutorial again":
+                    hover_color "#cca484"
+                action ShowMenu("tutorial1", tutorial_info=tutorial_info)
+    frame:
+        xalign 0.5
+        yalign 0.5
+        xpadding 30
+        ypadding 30
+        background Solid("#ac897eb9")
+        
+        vbox:
+            spacing 20
+            label "{color=#00000c} {b} Select the correct materials:" xalign 0.5
+            
+            # Display the number of selected items
+            text "Selected: [selected_len]/6" xalign 0.5
+            
+            vpgrid:
+                cols 4
+                spacing 40
+                for item in all_items:
+                    button:
+                        # Disable the button if the selection limit is reached and the item is not already selected
+                        action If(
+                            not max_selected or item in selected,
+                            ToggleSetMembership(selected, item),
+                            None
+                        )
+                        selected_background "#CCFFCC"
+                        xfill True
+                        xsize 200
+                        ysize 200
+                        sensitive (not max_selected or item in selected)  # Disable button if limit is reached
+                        if persistent.admin and item in correct_items:
+                            frame:
+                                background Solid("#f5eaeaff")
+                                xalign 0.5
+                                xysize (1.0, 1.0)
+                                frame:
+                                    background Solid("#ff000079")
+                                    xalign 0.5
+                                    xysize (1.0, 1.0)
+                        vbox:
+                            xalign 0.5
+                            spacing 5
+                            add materials[item]:
+                                xalign 2
+                                ysize 150
+                                fit "contain"
+                            text item:
+                                xalign 0.5
+                                text_align 0.5
+                                size 35
+            
+            vbox:
+                spacing 10
+                xalign 0.5
+                hbox:
+                    xalign 0.5
+                    textbutton "{color=#f5eaeaff} {b} Submit":
+                        sensitive max_selected
+                        action [Return(selected), Hide("material_selection")]
+                        xalign 0.5
+                if persistent.admin:
+                    hbox:
+                        spacing 30
+                        xalign 0.5
+                        textbutton "{color=#009900}Skip (correct){/color}":
+                            action [Return(correct_items), Hide("material_selection")]
+                            xalign 0.5
+                        textbutton "{color=#990000}Skip (incorrect){/color}":
+                            action [Return(set()), Hide("material_selection")]
+                            xalign 0.5
+
 
 screen tutorial1(tutorial_info):
     tag tutorials
@@ -275,7 +364,9 @@ screen tutorial1(tutorial_info):
             yalign 0.5
             spacing 5
             for info_text in tutorial_info_page:
-                text info_text
+                text info_text: 
+                    xalign 0.5
+                    text_align 0.5
 
 screen Backbutton:
     frame:
